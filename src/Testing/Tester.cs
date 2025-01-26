@@ -1,12 +1,12 @@
-﻿namespace CodeChallanges;
+﻿namespace CodeChallanges.Testing;
 
 internal static class Tester
 {
 	/// <param name="operationDisplayAction">Method Name | Method Param and Expected Result | Actual Result</param>
 	/// <returns></returns>
 	public static bool Match<TData, TResult>(
-		Func<TData, TResult> func, 
-		ReadOnlySpan<ExpectedResult<TData, TResult>> data, 
+		Func<TData, TResult> func,
+		ReadOnlySpan<ExpectedResult<TData, TResult>> data,
 		Action<string, ExpectedResult<TData, TResult>, TResult> operationDisplayAction,
 		IComparer<TResult>? comparer = null)
 	{
