@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CodeChallanges.CC_IsPalindrome;
+namespace CodeChallanges.Challanges.CC_IsPalindrome;
 internal sealed class IsPalindromeTests : ITest
 {
 	private static readonly string[] input = File.ReadLines("CC_IsPalindrome\\TestResources\\TestData.txt").ToArray();

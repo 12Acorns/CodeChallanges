@@ -1,8 +1,6 @@
-﻿using CodeChallanges.CC_FIndMissingN;
-using CodeChallanges.CC_IsPalindrome;
-using CodeChallanges;
+﻿using CodeChallanges.Challanges.CC_FindLongestWord;
+using CodeChallanges.Benchmarking;
 
-Benchmarker.TryRegister<MissingNBenchmarker>();
-Benchmarker.TryRegister<IsPalindromeBenchmarker>();
+Benchmarker.AutoRegisterMarked();
 
-Benchmarker.TryRun<IsPalindromeBenchmarker>(out _);
+Benchmarker.TryRun<FindLongestWordBenchmarker>(out _);

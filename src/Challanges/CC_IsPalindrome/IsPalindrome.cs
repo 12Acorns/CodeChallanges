@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace CodeChallanges.CC_IsPalindrome;
+namespace CodeChallanges.Challanges.CC_IsPalindrome;
 
 internal static class IsPalindrome
 {

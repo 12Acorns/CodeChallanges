@@ -4,12 +4,22 @@ using BenchmarkDotNet.Running;
 using BenchmarkDotNet.Reports;
 using System.Reflection;
 
-namespace CodeChallanges;
+namespace CodeChallanges.Benchmarking;
 
 internal static class Benchmarker
 {
-	private static ConcurrentDictionary<Type, bool> registeredBenchmarks = new();
+	private static readonly ConcurrentDictionary<Type, bool> registeredBenchmarks = new();
 
+	public static void AutoRegisterMarked()
+	{
+		var currAssem = Assembly.GetExecutingAssembly();
+		var types = currAssem.GetTypes();
+		var marked = types.Where(x => typeof(IBenchmark).IsAssignableFrom(x));
+		foreach(var type in marked)
+		{
+			registeredBenchmarks.TryAdd(type, true);
+		}
+	}
 	public static bool TryRegister<T>()
 	{
 		if(!Validate<T>())
@@ -55,8 +65,8 @@ internal static class Benchmarker
 	}
 	private static bool Validate<T>() =>
 		!IsSealedOrAbstractOrStatic<T>() && !IsInterface<T>();
-	private static bool IsSealedOrAbstractOrStatic<T>() => 
+	private static bool IsSealedOrAbstractOrStatic<T>() =>
 		typeof(T).IsSealed || typeof(T).IsAbstract;
 	private static bool IsInterface<T>() =>
-		typeof(T).IsInterface && (typeof(T).GetCustomAttribute<CoClassAttribute>() == null);
+		typeof(T).IsInterface && typeof(T).GetCustomAttribute<CoClassAttribute>() == null;
 }

@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="CC_IsPalindrome\TestResources\TestData.txt">
+    <None Update="Challanges\CC_IsPalindrome\TestResources\TestData.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

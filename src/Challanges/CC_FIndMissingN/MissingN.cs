@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics.X86;
 using System.Runtime.Intrinsics;
 
-namespace CodeChallanges.CC_FIndMissingN;
+namespace CodeChallanges.Challanges.CC_FIndMissingN;
 
 internal static class MissingN
 {
