@@ -1,35 +1,17 @@
-﻿using CodeChallanges.Challanges.CC_FindLongestWord;
+﻿using CodeChallanges.Challanges.CC_LongestIncreasingSubSequence;
+using CodeChallanges.Challanges.CC_SumOfPerfectSquares;
+using CodeChallanges.Challanges.CC_FindLongestWord;
 using CodeChallanges.Challanges.CC_SumOfNegatives;
+using CodeChallanges.Challanges.CC_IsSaddlePoint;
 using CodeChallanges.Challanges.CC_IsPerfect;
 using CodeChallanges.Benchmarking;
-using CodeChallanges.Challanges.CC_IsSaddlePoint;
+using System.Runtime.Intrinsics;
+using CodeChallanges.Extensions;
 
-//Console.WriteLine(SumOfNegativesTests.Run());
-
-var matrix = new int[,]
-{
-	{ 1, 2, 3 },
-	{ 4, 5, 6 },
-	{ 7, 8, 9 }
-};
-var matrix2 = new int[,]
-{
-	{ 1, 2, 3 },
-	{ 4, 5, 6 },
-	{ 10, 18, 4}
-};
-var matrix3 = new int[,]
-{
-	{ 1, 2, 3 },
-	{ 40, 20, 60 },
-	{ 10, 18, 4 }
-};
-
-Console.WriteLine(IsSaddlePoint.ContainsSaddlePointBaseline(new Matrix(matrix)));
-Console.WriteLine(IsSaddlePoint.ContainsSaddlePointBaseline(new Matrix(matrix2)));
-Console.WriteLine(IsSaddlePoint.ContainsSaddlePointBaseline(new Matrix(matrix3)));
+//Console.WriteLine(SumOfPerfectSquares.SumOfPerfectSquaresSIMDOp1([-1, 2, 3, -4, -5, 6, 7, -8, 9, 10, 11, 12, -13, -14, -15, -16, -17, -18, -19, -20, 21, 22, -23, -24, 25, 26, 27, -28, 29, 30, -31, 32, -33, 34, 35, 36, -37, -38, -39, -40, 41, 42, -43, 44, 45, -46, 47, -48, 49, 50, -51, 52, 53, 54, 55, 56, -57, -58, -59, 60, -61, -62, -63, -64, -65, -66, -67, -68, -69, -70, -71, -72, 73, -74, 75, 76, 77, -78, 79, -80, 81, -82, -83, -84, -85, -86, -87, 88, 89, -90, -91, 92, -93, 94, -95, 96, 97, 98, 99, 100]));
+//Console.WriteLine(SumOfPerfectSquares.SumOfPerfectSquaresScalarBaseline([-1, 2, 3, -4, -5, 6, 7, -8, 9, 10, 11, 12, -13, -14, -15, -16, -17, -18, -19, -20, 21, 22, -23, -24, 25, 26, 27, -28, 29, 30, -31, 32, -33, 34, 35, 36, -37, -38, -39, -40, 41, 42, -43, 44, 45, -46, 47, -48, 49, 50, -51, 52, 53, 54, 55, 56, -57, -58, -59, 60, -61, -62, -63, -64, -65, -66, -67, -68, -69, -70, -71, -72, 73, -74, 75, 76, 77, -78, 79, -80, 81, -82, -83, -84, -85, -86, -87, 88, 89, -90, -91, 92, -93, 94, -95, 96, 97, 98, 99, 100]));
 
 return;
 
 Benchmarker.AutoRegisterMarked();
-Benchmarker.TryRun<SumOfNegativesBenchmarker>(out _);
+Benchmarker.TryRun<SumOfPerfectSquaresBenchmarker>(out _);
