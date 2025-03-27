@@ -5,11 +5,13 @@ using System.Collections;
 using System.Diagnostics;
 using System;
 
-namespace CodeChallanges.Challanges.CC_IsSaddlePoint;
+namespace CodeChallanges.Utility;
 
 [DebuggerDisplay("Value: {Value}, Index: {Index}")]
 internal struct IndexedElement<TValue>
 {
+	public IndexedElement((int Index, TValue Value) tpl) : this(tpl.Value, tpl.Index) { }
+	public IndexedElement((TValue Value, int Index) tpl) : this(tpl.Value, tpl.Index) { }
 	public IndexedElement(TValue value, int index)
 	{
 		Value = value;
@@ -19,6 +21,17 @@ internal struct IndexedElement<TValue>
 	public TValue Value { get; }
 	public int Index { get; }
 
+
+	public override bool Equals(object? obj)
+	{
+		if(obj == null || obj is not IndexedElement<TValue> val)
+		{
+			return false;
+		}
+		return this == val;
+	}
+	public override int GetHashCode() =>
+		HashCode.Combine(Value, Index);
 	public void Deconstruct(out TValue value, out int index)
 	{
 		value = Value;
@@ -48,15 +61,6 @@ internal struct IndexedElement<TValue>
 	public static bool operator !=(IndexedElement<TValue> @this, IndexedElement<TValue> other) =>
 		!(@this == other);
 
-	public override bool Equals(object? obj)
-	{
-		if(obj == null || obj is not IndexedElement<TValue> val)
-		{
-			return false;
-		}
-		return this == val;
-	}
-
-	public override int GetHashCode() =>
-		HashCode.Combine(Value, Index);
+	public static implicit operator IndexedElement<TValue>((int index, TValue value) indexedTuple) => new(indexedTuple);
+	public static implicit operator IndexedElement<TValue>((TValue value, int index) indexedTuple) => new(indexedTuple);
 }

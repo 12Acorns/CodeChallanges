@@ -6,6 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <IncludeSymbols>False</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <AnalysisLevel>latest</AnalysisLevel>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,6 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Challanges\CC_FindTargetElementFromPivot\TestResources\TestData.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Challanges\CC_IsPalindrome\TestResources\TestData.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

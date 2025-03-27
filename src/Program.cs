@@ -1,17 +1,40 @@
 ﻿using CodeChallanges.Challanges.CC_LongestIncreasingSubSequence;
+using CodeChallanges.Challanges.CC_FindTargetElementFromPivot;
 using CodeChallanges.Challanges.CC_SumOfPerfectSquares;
+using CodeChallanges.Challanges.CC_CheckPermutation;
 using CodeChallanges.Challanges.CC_FindLongestWord;
+using CodeChallanges.Challanges.CC_SumDivisibleByK;
 using CodeChallanges.Challanges.CC_SumOfNegatives;
 using CodeChallanges.Challanges.CC_IsSaddlePoint;
-using CodeChallanges.Challanges.CC_IsPerfect;
+using CodeChallanges.Challanges.CC_IsPalindrome2;
+using CodeChallanges.Challanges.CC_StringToArray;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using CodeChallanges.Utility.String;
 using CodeChallanges.Benchmarking;
-using System.Runtime.Intrinsics;
 using CodeChallanges.Extensions;
+using CodeChallanges.Utility;
+using System.Buffers;
 
-//Console.WriteLine(SumOfPerfectSquares.SumOfPerfectSquaresSIMDOp1([-1, 2, 3, -4, -5, 6, 7, -8, 9, 10, 11, 12, -13, -14, -15, -16, -17, -18, -19, -20, 21, 22, -23, -24, 25, 26, 27, -28, 29, 30, -31, 32, -33, 34, 35, 36, -37, -38, -39, -40, 41, 42, -43, 44, 45, -46, 47, -48, 49, 50, -51, 52, 53, 54, 55, 56, -57, -58, -59, 60, -61, -62, -63, -64, -65, -66, -67, -68, -69, -70, -71, -72, 73, -74, 75, 76, 77, -78, 79, -80, 81, -82, -83, -84, -85, -86, -87, 88, 89, -90, -91, 92, -93, 94, -95, 96, 97, 98, 99, 100]));
-//Console.WriteLine(SumOfPerfectSquares.SumOfPerfectSquaresScalarBaseline([-1, 2, 3, -4, -5, 6, 7, -8, 9, 10, 11, 12, -13, -14, -15, -16, -17, -18, -19, -20, 21, 22, -23, -24, 25, 26, 27, -28, 29, 30, -31, 32, -33, 34, 35, 36, -37, -38, -39, -40, 41, 42, -43, 44, 45, -46, 47, -48, 49, 50, -51, 52, 53, 54, 55, 56, -57, -58, -59, 60, -61, -62, -63, -64, -65, -66, -67, -68, -69, -70, -71, -72, 73, -74, 75, 76, 77, -78, 79, -80, 81, -82, -83, -84, -85, -86, -87, 88, 89, -90, -91, 92, -93, 94, -95, 96, 97, 98, 99, 100]));
+//static string PP2(scoped ReadOnlySpan<StringView> s) =>
+//	$"[{string.Join(", ", s.Select<StringView, string?>(x => $"\"{x.View}\""))}]";
+//static string PP1(scoped ReadOnlySpan<string> s) =>
+//	$"[{string.Join(", ", s.Select<string, string?>(x => $"\"{x}\""))}]";
 
-return;
+//var r1 = StringToArray.StringToArrayBaseline("I love coding ");
+//var r2 = StringToArray.StringToArrayOp1("I love coding ");
+//var r3 = StringToArray.StringToArrayOp2("I love coding ", out var r3Strings);
+//var r4 = StringToArray.StringToArrayOp2("I love coding", out var r4Strings);
+
+//Console.WriteLine(PP1(r1));
+//Console.WriteLine(PP1(r2));
+//Console.WriteLine(PP2(r3Strings));
+//Console.WriteLine(PP2(r4Strings));
+
+//r3.Dispose();
+//r4.Dispose();
+
+//return;
 
 Benchmarker.AutoRegisterMarked();
-Benchmarker.TryRun<SumOfPerfectSquaresBenchmarker>(out _);
+Benchmarker.TryRun<StringToArrayBenchmarker>(out _);

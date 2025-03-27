@@ -1,4 +1,6 @@
-﻿namespace CodeChallanges.Challanges.CC_IsSaddlePoint;
+﻿using CodeChallanges.Utility;
+
+namespace CodeChallanges.Challanges.CC_IsSaddlePoint;
 
 internal static class IsSaddlePoint
 {

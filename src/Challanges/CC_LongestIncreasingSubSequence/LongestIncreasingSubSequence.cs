@@ -1,5 +1,4 @@
-﻿using CodeChallanges.Challanges.CC_IsSaddlePoint;
-
+﻿using CodeChallanges.Utility;
 using static BenchmarkDotNet.Attributes.MarkdownExporterAttribute;
 
 namespace CodeChallanges.Challanges.CC_LongestIncreasingSubSequence;
