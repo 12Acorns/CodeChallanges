@@ -54,6 +54,7 @@ internal static class StringToArray
 			return pin;
 		}
 	}
+	// ChatGPT optimised apparently
 	public static unsafe ReadOnlySpan<string> StringToArrayOp1(string s)
 	{
 		if(string.IsNullOrWhiteSpace(s))
@@ -61,29 +62,43 @@ internal static class StringToArray
 			return [];
 		}
 
-		var sSpan = s.AsSpan();
-		var idx = sSpan.IndexOf(' ');
-		Span<PackData<IntPtr, int>> store = stackalloc PackData<IntPtr, int>[s.Length / 2 + 1];
-		Unsafe.SkipInit(out store);
+		// Determine exact allocation size by counting spaces
+		int spaceCount = 0;
+		foreach(char c in s)
+			if(c == ' ')
+				spaceCount++;
+
+		int wordCount = spaceCount + 1; // Words = spaces + 1
+		Span<PackData<IntPtr, int>> store = stackalloc PackData<IntPtr, int>[wordCount];
+
 		int i = 0;
 		fixed(char* sPtr = s)
 		{
 			char* relStart = sPtr;
-			while(idx > -1)
+			char* end = sPtr + s.Length;
+
+			while(relStart < end)
 			{
-				store[i++] = new((IntPtr)relStart, idx);
-				sSpan = sSpan[(idx + 1)..];
-				relStart += idx + 1;
-				idx = sSpan.IndexOf(' ');
+				char* space = relStart;
+				while(space < end && *space != ' ')
+					space++;
+
+				int length = (int)(space - relStart);
+				if(length > 0) // Ignore consecutive spaces
+				{
+					store[i++] = new((IntPtr)relStart, length);
+				}
+
+				relStart = space + 1; // Move past space
 			}
-			var empty = sSpan.IsWhiteSpace() || sSpan.IsEmpty;
-			if(!empty)
-			{
-				store[i] = new((IntPtr)relStart, sSpan.Length);
-			}
-			i = !empty ? i + 1 : i;
+
+			// Convert spans to strings directly
 			var result = new string[i];
-			_ = store[..(i)].Select(result, x => new string((char*)x.Item1, 0, x.Item2));
+			for(int j = 0; j < i; j++)
+			{
+				result[j] = new string((char*)store[j].Item1, 0, store[j].Item2);
+			}
+
 			return result;
 		}
 	}
